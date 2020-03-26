@@ -3,13 +3,14 @@ describe("Journalist can", () => {
     cy.server();
     cy.route({
       method: "POST",
-      url: "http://localhost:3000/api/articles",
+      url: "https://newsroom-team-1.herokuapp.com/api/articles",
       response: "fixture:create_article_response.json"
     });
     cy.visit("/");
   });
 
   it("create an article successfully", () => {
+    const imageFileName = "test.jpeg";
     cy.get("#new-article-form").within(() => {
       cy.get("#title").type("This is a title");
       cy.get("#lead").type("This is a lead");
@@ -18,10 +19,10 @@ describe("Journalist can", () => {
       cy.get('div[role="option"]')
         .contains("Tech")
         .click();
-      cy.get("#imageUpload").click();
+      cy.file_upload('img.png', '#image-upload', 'image/png');
     });
-    cy.get("#create-article-button").click();
 
+    cy.get("#create-article-button").click();
     cy.get("#message").should(
       "contain",
       "Your article was successfully created"
