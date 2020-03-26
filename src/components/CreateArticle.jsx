@@ -11,6 +11,7 @@ class CreateArticle extends Component {
 
   onCreate = async e => {
     e.preventDefault();
+    debugger
     let response = await axios.post(
       "/articles",
       {
@@ -24,6 +25,7 @@ class CreateArticle extends Component {
       },
       { headers: { "Content-Type": "application/json" } }
     );
+    debugger
     if (response.status === 200) {
       this.setState({ message: response.data.message });
     } else {
@@ -78,10 +80,8 @@ class CreateArticle extends Component {
             name="category"
             width={6}
           />
-          {/* <Form.Input id="image" type="file" name="image" key="image"/> */}
           <ImageUploading onChange={this.onImageDropHandler}>
             {({ imageList, onImageUpload }) => (
-              // write your building UI
               <div className="upload__image-wrapper">
                 <Button id="image-upload" onClick={onImageUpload}>
                   Upload images
