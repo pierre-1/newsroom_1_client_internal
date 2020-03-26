@@ -83,7 +83,7 @@ class CreateArticle extends Component {
             {({ imageList, onImageUpload }) => (
               // write your building UI
               <div className="upload__image-wrapper">
-                <Button id="imageUpload" onClick={onImageUpload}>
+                <Button id="image-upload" onClick={onImageUpload}>
                   Upload images
                 </Button>
                 &nbsp;
