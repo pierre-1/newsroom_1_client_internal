@@ -11,7 +11,6 @@ class CreateArticle extends Component {
 
   onCreate = async e => {
     e.preventDefault();
-    debugger
     let response = await axios.post(
       "/articles",
       {
@@ -25,7 +24,6 @@ class CreateArticle extends Component {
       },
       { headers: { "Content-Type": "application/json" } }
     );
-    debugger
     if (response.status === 200) {
       this.setState({ message: response.data.message });
     } else {
