@@ -23,7 +23,7 @@ describe("Journalist can", () => {
     });
 
     cy.get("#create-article-button").click();
-    cy.get("#message").should(
+    cy.get("p#message").should(
       "contain",
       "Your article was successfully created"
     );

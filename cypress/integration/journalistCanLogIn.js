@@ -4,12 +4,12 @@ describe("Journalist can login", () => {
     cy.route({
       method: "POST",
       url: "**/**",
-      response: "fixture:login.json"
+      response: "fixture:journalist_login.json"
     });
     cy.route({
       method: "GET",
       url: "**/auth/**",
-      response: "fixture:login.json"
+      response: "fixture:journalist_login.json"
     });
     cy.visit("/")
   });
@@ -26,7 +26,7 @@ describe("Journalist can login", () => {
         .click();
     });
     cy.wait(500)
-    cy.get("#message").should("contain", "Welcome journalist@mail.com");
+    cy.get("p#message").should("contain", "Welcome journalist@mail.com");
   });
 });
 
@@ -42,19 +42,24 @@ describe("User can login", () => {
         success: false
       }
     });
-    cy.visit("http://localhost:3001");
+    cy.route({
+      method: "GET",
+      url: "**/auth/**",
+      response: "fixture:user_login.json"
+    });
+    cy.visit("/")
   });
 
   it("With invalid credentials", () => {
     cy.get("#login").click();
     cy.get("#login-form").within(() => {
-      cy.get("#email").type("journalist@mail.com");
+      cy.get("#email").type("user@mail.com");
       cy.get("#password").type("wrong");
       cy.get("#login-button")
       .contains("Login")
       .click();
     });
-    cy.get("#message").should(
+    cy.get("p#message").should(
       "contain",
       "Invalid login credentials. Please try again."
     );
