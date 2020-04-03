@@ -25,13 +25,14 @@ describe("Journalist can login", () => {
         .contains("Login")
         .click();
     });
-    cy.get("#message").should("contain", "Welcome user@mail.com");
+    cy.wait(500)
+    cy.get("#message").should("contain", "Welcome journalist@mail.com");
   });
 });
 
 describe("User can login", () => {
   beforeEach(() => {
-    cy.server;
+    cy.server();
     cy.route({
       method: "POST",
       url: "**/auth/sign_in",
@@ -41,7 +42,7 @@ describe("User can login", () => {
         success: false
       }
     });
-    cy.visit("http://localhost:3002");
+    cy.visit("http://localhost:3001");
   });
 
   it("With invalid credentials", () => {

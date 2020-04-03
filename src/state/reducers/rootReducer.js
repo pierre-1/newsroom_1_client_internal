@@ -20,7 +20,6 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case actionTypes.GREETING:
-      debugger
       return {
         ...state,
         message: action.payload

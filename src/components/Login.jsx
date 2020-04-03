@@ -28,10 +28,8 @@ const Login = () => {
   return (
     <Modal open={true}>
       <Header icon="sign-in" content="Login" />
-      <Modal.Content>
-        {message}
-      </Modal.Content>
-      <Modal.Content>
+      <Modal.Content id="message">
+        {message && <p id="message">{message}</p>}
         {login}
       </Modal.Content>
       <Modal.Actions>
