@@ -1,8 +1,14 @@
 import React from "react";
 import CreateArticle from "./components/CreateArticle";
+import DisplayHeader from "./components/Header";
 
 const App = () => {
-  return <CreateArticle />;
+  return(
+  <> 
+    <DisplayHeader/>
+    <CreateArticle />
+  </>
+  );
 };
 
 export default App;
