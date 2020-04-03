@@ -3,7 +3,7 @@ describe("Journalist can", () => {
     cy.server();
     cy.route({
       method: "POST",
-      url: "https://newsroom-team-1.herokuapp.com/api/articles",
+      url: "**/api/articles",
       response: "fixture:create_article_response.json"
     });
     cy.visit("/");
