@@ -11,7 +11,7 @@ describe("Journalist can login", () => {
       url: "**/auth/**",
       response: "fixture:login.json"
     });
-    cy.visit("http://localhost:3002")
+    cy.visit("/")
   });
 
   it("Sucessfully", () => {
